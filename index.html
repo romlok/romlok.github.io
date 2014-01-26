@@ -11,18 +11,11 @@
 			body {
 				font-family: sans-serif;
 				color: #eee;
-				background-color: #321;
-			}
-			#fake-background {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 100%;
-				height: 100%;
-				margin: 0em;
-				padding: 0em;
-				border: 0em;
-				z-index: -1000;
+				background-color: #654;
+				background-image: url(img/cityscape.svg);
+				background-attachment: fixed;
+				background-size: cover;
+				background-repeat: no-repeat;
 			}
 			
 			h1 {
@@ -76,8 +69,6 @@
 		</style>
 	</head>
 	<body>
-		<!-- Fake background image, because Chrome needs to pull its finger out -->
-		<img id="fake-background" src="img/cityscape.svg" />
 		<h1>Raumkraut.net</h1>
 		<div id="projects">
 			<ul>
