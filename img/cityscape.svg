@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		version="1.1"
+		baseProfile="basic"
+		width="100%" height="100%"
+		preserveAspectRatio="none"
+		id="display"
+		>
+	<title>Raumkraut Cityscape</title>
+	
+	<defs>
+		<linearGradient id="gradient-sky"
+				gradientUnits="objectBoundingBox"
+				x1="0" y1="0" x2="0" y2="1"
+				>
+			<stop offset="0" stop-color="#223" />
+			<stop offset="1" stop-color="#642" />
+		</linearGradient>
+		
+		<pattern id="pattern-rain1"
+				patternUnits="userSpaceOnUse"
+				x="0" y="0" width="200" height="400"
+				patternTransform="rotate(20)"
+				>
+			<rect x="0" y="0" width="100%" height="100%" opacity="0" />
+			<g stroke="#ddf" stroke-width="0.5">
+				<path d="M 0,0 l 0,50" />
+				<path d="M 30,40 l 0,50" />
+				<path d="M 160,20 l 0,50" />
+				<path d="M 110,80 l 0,50" />
+				<path d="M 80,140 l 0,50" />
+				<path d="M 170,170 l 0,50" />
+				<path d="M 20,200 l 0,50" />
+				<path d="M 120,220 l 0,50" />
+				<path d="M 60,260 l 0,50" />
+				<path d="M 180,280 l 0,50" />
+				<path d="M 130,330 l 0,50" />
+				<path d="M 70,340 l 0,50" />
+			</g>
+			<!-- Animation is too CPU-intensive right now :(
+			<animate attributeType="XML" attributeName="y"
+					from="0" to="200"
+					dur="2s" repeatCount="indefinite"
+					/>
+			-->
+		</pattern>
+		<pattern id="pattern-rain2"
+				xlink:href="#pattern-rain1"
+				patternTransform="rotate(20) scale(2)"
+				/>
+	</defs>
+	
+	<g id="sky">
+		<rect x="0" y="0" width="100%" height="100%"
+				fill="url(#gradient-sky)"
+				/>
+	</g>
+	
+	<svg id="outer"
+			x="100%" y="0"
+			width="1" height="100%"
+			viewBox="0 0 1 1000"
+			preserveAspectRatio="xMaxYMax meet"
+			stroke="none"
+			overflow="visible"
+			>
+		<svg id="inner"
+				x="-2000" y="0"
+				width="2000" height="100%"
+				viewBox="0 0 2000 1000"
+				preserveAspectRatio="xMaxYMax slice"
+				overflow="visible"
+				>
+			<defs>
+				<filter id="filter-blur"
+						filterUnits="userSpaceOnUse"
+						>
+					<feGaussianBlur in="SourceGraphic" result="blurred"
+							stdDeviation="2"
+							/>
+				</filter>
+				<filter id="filter-muchoblur"
+						filterUnits="userSpaceOnUse"
+						>
+					<feGaussianBlur in="SourceGraphic" result="blurred"
+							stdDeviation="4"
+							/>
+				</filter>
+				
+				<filter id="filter-clouds"
+						filterUnits="objectBoundingBox"
+						x="0%" y="0%" width="100%" height="100%"
+						>
+					<feTurbulence result="noise"
+							type="fractalNoise"
+							baseFrequency="0.002 0.01" numOctaves="1"
+							/>
+					<feColorMatrix in="noise" result="greyscale"
+							type="matrix"
+							values="
+								.33 .33 .33 0 0 
+								.33 .33 .33 0 0 
+								.33 .33 .33 0 0 
+								.33 .33 .33 0 0
+							"/>
+				</filter>
+				
+				<mask id="mask-sidefade"
+						maskUnits="userSpaceOnUse"
+						maskContentUnits="objectBoundingBox"
+						>
+					<linearGradient id="gradient-sidefade"
+							gradientUnits="objectBoundingBox"
+							x1="0" y1="0" x2="1" y2="0"
+							>
+						<stop offset="0" stop-color="#fff" stop-opacity="0" />
+						<stop offset="0.5" stop-color="#fff" stop-opacity="1" />
+					</linearGradient>
+					<rect x="0" y="0" width="1" height="1"
+							fill="url(#gradient-sidefade)"
+							/>
+				</mask>
+				
+				<mask id="mask-rk"
+						maskUnits="objectBoundingBox"
+						maskContentUnits="objectBoundingBox"
+						>
+					<radialGradient id="gradient-spotlight"
+							gradientUnits="objectBoundingBox"
+							cx="0.5" cy="0.5" r="0.5"
+							>
+						<stop offset="0.9" stop-color="#fff" stop-opacity="1" />
+						<stop offset="1" stop-color="#fff" stop-opacity="0" />
+					</radialGradient>
+					<rect x="0" y="0" width="1" height="1"
+							fill="url(#gradient-spotlight)"
+							/>
+					<g
+							stroke="#000" stroke-width="0.02"
+							stroke-linejoin="miter"
+							fill="#000"
+							>
+						<rect x="0.2" y="0.2" width="0.1" height="0.6" />
+						<rect x="0.35" y="0.2" width="0.45" height="0.1" />
+						<rect x="0.35" y="0.35" width="0.1" height="0.45" />
+						<path
+								d="M 0.5,0.525
+									L 0.65,0.35 l 0.15,0 l 0,0.01
+									L 0.6,0.575
+									L 0.8,0.79 l 0,0.01 l -0.15,0
+									L 0.5,0.625 Z"
+								/>
+					</g>
+				</mask>
+				
+				<pattern id="pattern-rooftops1"
+						patternUnits="userSpaceOnUse"
+						x="0" y="0" width="350" height="1000"
+						>
+					<rect x="0" y="900" width="100" height="100" fill="#543" />
+				</pattern>
+				<pattern id="pattern-rooftops2"
+						patternUnits="userSpaceOnUse"
+						x="0" y="0" width="256" height="1000"
+						>
+					<rect x="0" y="930" width="80" height="70" fill="#432" />
+				</pattern>
+				<pattern id="pattern-rooftops3"
+						patternUnits="userSpaceOnUse"
+						x="0" y="0" width="210" height="1000"
+						>
+					<rect x="0" y="950" width="110" height="50" fill="#321" />
+				</pattern>
+				<pattern id="pattern-rooftops4"
+						patternUnits="userSpaceOnUse"
+						x="0" y="0" width="170" height="1000"
+						>
+					<rect x="0" y="970" width="110" height="30" fill="#211" />
+				</pattern>
+			</defs>
+			
+			
+			<g id="background" mask="url(#mask-sidefade)">
+				<rect id="clouds"
+						x="0" y="0" height="100%" width="100%"
+						filter="url(#filter-clouds)"
+						opacity="0.3"
+						/>
+				
+				<rect x="0" y="0" width="100%" height="100%"
+						fill="url(#pattern-rain1)"
+						filter="url(#filter-blur)"
+						/>
+				
+				<rect x="0" y="900" width="100%" height="100"
+						fill="url(#pattern-rooftops1)"
+						/>
+				<rect x="0" y="900" width="100%" height="100"
+						fill="url(#pattern-rooftops2)"
+						/>
+				<rect x="0" y="900" width="100%" height="100"
+						fill="url(#pattern-rooftops3)"
+						/>
+				<rect x="0" y="900" width="100%" height="100"
+						fill="url(#pattern-rooftops4)"
+						/>
+			</g>
+			
+			<g id="scene" transform="translate(1000,0)">
+				<g id="signal" filter="url(#filter-blur)">
+					<circle cx="650" cy="250" r="200"
+							fill="#fff" mask="url(#mask-rk)"
+							opacity="0.7"
+							transform="skewX(20)"
+							/>
+					<path d="M 220,860
+								L 560,120
+								C 600,30 770,70 850,150
+								S 970,350 910,400
+								Z"
+							fill="#fff"
+							opacity="0.1"
+							filter="url(#filter-muchoblur)"
+							/>
+				</g>
+				
+				<g id="buildings" stroke="none" fill="black">
+					<rect x="200" y="850" width="200" height="150" />
+					<rect x="750" y="700" width="200" height="300" />
+					<path d="M 760,710 L 850,600 940,710 Z"
+							/>
+				</g>
+				
+				<text x="755" y="700"
+						font-family="sans-serif"
+						font-size="20"
+						font-weight="bold"
+						text-anchor="middle"
+						>@</text>
+			</g>
+			
+			<g id="foreground" mask="url(#mask-sidefade)">
+				<rect x="0" y="0" width="100%" height="100%"
+						fill="url(#pattern-rain2)"
+						filter="url(#filter-blur)"
+						/>
+			</g>
+		</svg>
+	</svg>
+</svg>

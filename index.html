@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Raumkraut.net</title>
+		<link rel="icon" type="image/png" href="img/rk-32.png" />
+		<style type="text/css">
+			html, body {
+				margin: 0em;
+				padding: 0em;
+			}
+			body {
+				font-family: sans-serif;
+				color: #eee;
+				background-color: #321;
+			}
+			#fake-background {
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0em;
+				padding: 0em;
+				border: 0em;
+				z-index: -1000;
+			}
+			
+			h1 {
+				margin: 0.2em;
+				font-size: 2em;
+			}
+			h2 {
+				margin: 0em;
+				padding: 0em;
+				font-size: 1.5em;
+			}
+			h3 {
+				margin: 0em;
+				font-size: 1em;
+			}
+			
+			a {
+				color: #d84;
+			}
+			a:visited {
+				color: #a64;
+			}
+			
+			#projects {
+				float: left;
+				width: 32em;
+				height: 60%;
+				margin: 0.2em 1em;
+				border: 0.1em solid brown;
+				color: #ddd;
+				background-color: black;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			#projects ul {
+				margin: 0em;
+				padding: 0em 1em;
+			}
+			#projects li {
+				padding-top: 1em;
+				border-bottom: 0.1em dashed brown;
+				list-style-type: none;
+			}
+			
+			.thumb {
+				float: left;
+				width: 6em;
+				height: 4em;
+				margin: 0em 0.5em 0.1em 0em;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Fake background image, because Chrome needs to pull its finger out -->
+		<img id="fake-background" src="img/cityscape.svg" />
+		<h1>Raumkraut.net</h1>
+		<div id="projects">
+			<ul>
+				<li>
+					<h2>Blog: Note to Self</h2>
+					<h3><a href="http://raumkraut.wordpress.com/">http://raumkraut.wordpress.com/</a></h3>
+					<p>Yes, I finally gave in and started a blog. Don't go holding your breath for reams of insightful commentary.</p>
+				</li>
+				<li>
+					<img class="thumb" src="img/f00baron-thumb.svg" />
+					<h2>#F00 Baron</h2>
+					<h3><a href="http://f00baron.bitbucket.org/">http://f00baron.bitbucket.org/</a></h3>
+					<p>The Red Baron takes to the skies once again, to take down his arch nemesis, the Yellow Baron!</p>
+					<p>A two-player action game of SVG aerial combat, in the tradition of Biplane Duel.</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
